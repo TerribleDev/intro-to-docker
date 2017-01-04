@@ -1,6 +1,6 @@
 ## Intro to docker
 
-This is the code for my intro to docker class. These are the materials for an in-person class, and is **not for self-directed learning**. This is still being put together. Please clone the repo on the day of the class for the latest materials.
+This is the code for my intro to docker class. These are the materials for an in-person class, and are **not for self-directed learning**. This is still being put together. Please clone the repo on the day of the class for the latest materials.
 
 ## Getting Started
 
