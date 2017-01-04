@@ -28,12 +28,14 @@ We need to create a machine by doing the following. Please note that you must re
 
 
 ```powershell
+# powershell
 docker-machine create mydock -d MyHypervisor
 ```
 
 Now when we work with docker we need to first configure our shell to tell docker to use this machine (once per shell instance)
 
 ```powershell
+# powershell
 docker-machine env mydock | invoke-expression
 ```
 
