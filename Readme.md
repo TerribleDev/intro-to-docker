@@ -7,7 +7,6 @@ This is the code for my intro to docker class. These are the materials for an in
 We first need to setup our machines. Click the link for your OS. 
 
 * [Windows 10](https://gist.github.com/TerribleDev/dd424d3d090bcf5634dcf8417411a081)
-* [Windows Server 2016](https://gist.github.com/TerribleDev/106197d88d1535dd0546165f5a7eb6a8)
 * [Windows 7](https://gist.github.com/TerribleDev/721fde498ae7e2e17c5c44a9d8e07412)
 * [Windows 8, 8.1, Server 2012, Server 2012 R2](https://gist.github.com/TerribleDev/ad0d19734cbf0b5717a2d4e6fef7f011)
 * [Ubuntu 14.04](https://gist.github.com/TerribleDev/3e0a8bab68b83fe5ef896a3bf16a85ce)
