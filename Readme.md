@@ -32,10 +32,23 @@ mkdir -p /usr/local/lib
 ln -s /usr/local/opt/openssl/lib/libcrypto.1.0.0.dylib /usr/local/lib/
 ln -s /usr/local/opt/openssl/lib/libssl.1.0.0.dylib /usr/local/lib/
 brew cask install dotnet
+brew install node
+npm install -g npm
+npm install -g yeoman generator-docker generator-dotnet
 
 ```
 
+## What you will need
 
+if you prefer to not use the scripts I have made you will need the following installed.
+
+* dotnet core 
+* docker-toolbox
+* nodejs
+* npm
+* yeoman
+* generator-docker (npm module)
+* generator-dotnet (npm module)
 
 ## Notes about Windows 7, 8, 8.1, server 2012
 
