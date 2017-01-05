@@ -12,9 +12,12 @@ We first need to setup our machines. Click the link for your OS.
 * [Windows 8, 8.1, Server 2012, Server 2012 R2](https://gist.github.com/TerribleDev/ad0d19734cbf0b5717a2d4e6fef7f011)
 * [Ubuntu 14.04](https://gist.github.com/TerribleDev/3e0a8bab68b83fe5ef896a3bf16a85ce)
 
+
+
 ## macOS Yosemite 10.10.3 or above
 
-if you are on macOS you can `brew cask install docker-toolbox` or you can download the docker [toolbox here](https://download.docker.com/mac/stable/Docker.dmg)
+if you are on macOS you can `brew cask install docker-toolbox` or you can download the docker [toolbox here](https://download.docker.com/mac/stable/Docker.dmg). You will then need to install [dotnet core](https://www.microsoft.com/net/core#macos). I don't have a mac so I was unable to script this sorry!
+
 
 ## Notes about Windows 7, 8, 8.1, server 2012
 
