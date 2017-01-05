@@ -43,11 +43,6 @@ if you prefer to not use the scripts I have made you will need the following ins
 
 * dotnet core 
 * docker-toolbox
-* nodejs
-* npm
-* yeoman
-* generator-docker (npm module)
-* generator-dotnet (npm module)
 
 ## Notes about Windows 7, 8, 8.1, server 2012
 
