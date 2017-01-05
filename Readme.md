@@ -16,7 +16,25 @@ We first need to setup our machines. Click the link for your OS.
 
 ## macOS Yosemite 10.10.3 or above
 
-if you are on macOS you can `brew cask install docker-toolbox` or you can download the docker [toolbox here](https://download.docker.com/mac/stable/Docker.dmg). You will then need to install [dotnet core](https://www.microsoft.com/net/core#macos). I don't have a mac so I was unable to script this sorry!
+if you are on macOS you can `brew cask install docker-toolbox` or you can download the docker [toolbox here](https://download.docker.com/mac/stable/Docker.dmg). You will then need to install [dotnet core](https://www.microsoft.com/net/core#macos). 
+
+I don't have a mac so I couldn't test this, but this script might work so long as you have ruby installed:
+
+
+```bash
+
+/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+brew tap caskroom/cask
+brew cask install docker-toolbox
+brew update
+brew install openssl
+mkdir -p /usr/local/lib
+ln -s /usr/local/opt/openssl/lib/libcrypto.1.0.0.dylib /usr/local/lib/
+ln -s /usr/local/opt/openssl/lib/libssl.1.0.0.dylib /usr/local/lib/
+brew cask install dotnet
+
+```
+
 
 
 ## Notes about Windows 7, 8, 8.1, server 2012
