@@ -4,7 +4,7 @@ This is the code for my intro to docker class. These are the materials for an in
 
 ## Getting Started
 
-We first need to setup our machines. Click the link for your OS. 
+We first need to setup our machines. Click the link for your OS. Please read below for specific instructions if required. After you have your machine setup read the [intro](intro.md) 
 
 * [Windows 10](https://gist.github.com/TerribleDev/dd424d3d090bcf5634dcf8417411a081)
 * [Windows 7](https://gist.github.com/TerribleDev/721fde498ae7e2e17c5c44a9d8e07412)
@@ -13,7 +13,7 @@ We first need to setup our machines. Click the link for your OS.
 
 
 
-## macOS Yosemite 10.10.3 or above
+### macOS Yosemite 10.10.3 or above
 
 if you are on macOS you can `brew cask install docker-toolbox` or you can download the docker [toolbox here](https://download.docker.com/mac/stable/Docker.dmg). You will then need to install [dotnet core](https://www.microsoft.com/net/core#macos). 
 
@@ -34,14 +34,14 @@ brew cask install dotnet
 
 ```
 
-## What you will need
+### What you will need
 
 if you prefer to not use the scripts I have made you will need the following installed.
 
 * dotnet core 
 * docker-toolbox
 
-## Notes about Windows 7, 8, 8.1, server 2012
+### Notes about Windows 7, 8, 8.1, server 2012
 
 Since you are on older verisons of windows you will run the docker kernel as a VM in a [hypervisor](https://en.wikipedia.org/wiki/Hypervisor). Your hypervisors are listed below.
 

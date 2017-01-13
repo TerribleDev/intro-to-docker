@@ -1,0 +1,52 @@
+<% include header %>
+
+  <h1></h1>
+  <p>bitminer</p>
+  <div id="chart" style="height:500px"></div>
+  <link rel="stylesheet" type="text/css" href="/components/rickshaw/rickshaw.css" />
+  <script src="/components/moment/min/moment.min.js"></script>
+  <script src="/components/d3/d3.min.js"></script>
+  <script src="/components/rickshaw/rickshaw.min.js"></script>
+  <script src="/components/underscore/underscore-min.js"></script>
+  <script src="/components/jquery/dist/jquery.min.js"></script>
+  <script>
+  var data = []
+  var graph = new Rickshaw.Graph({
+        element: document.querySelector("#chart"),
+        renderer: 'area',
+        series: [{
+                  data: data,
+                color: 'steelblue'
+        }]
+});
+var yAxis = new Rickshaw.Graph.Axis.Y({
+    graph: graph,
+    tickFormat: Rickshaw.Fixtures.Number.formatKMBT,
+    ticksTreatment: "glow"
+});
+var addData = function(apiData){
+
+  data.length = 0
+  calculatedData = _.chain(apiData)
+  .map(function(data){
+    return {x: parseInt(moment.utc(data.date).format('x')), y: data.value}
+  })
+  .sortBy(function(mappedObj){return mappedObj.x;}).value();
+  _.each(calculatedData, function(item){data.push(item)});
+  graph.update();
+
+};
+var updateData = function(){
+  $.ajax('/db', {
+    dataType: 'json',
+    success: addData
+  });
+};
+new Rickshaw.Graph.Axis.Time({
+  graph: graph
+});
+
+graph.render();
+setInterval(updateData, 1000);
+</script>
+<% include footer %>
