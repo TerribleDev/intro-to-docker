@@ -1,8 +1,8 @@
 FROM node:boron-wheezy
 RUN npm install -g bower
 ADD package.json .
-ADD .bowerrc .
 RUN npm install
+ADD .bowerrc .
 ADD bower.json .
 RUN bower install --allow-root
 ADD . .
