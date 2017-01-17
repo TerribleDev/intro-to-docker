@@ -80,3 +80,21 @@ CMD ["dotnet", "run", "-c", "Release", "--server.urls", "http://*:80"]
 You run `docker build . -t hashr` which builds the container locally and tags it with the name hashr. You can see it listed if you run `docker images`. You can now run the container locally by executing `docker run -p 8080:80 -d -t hashr` and browsing to `localhost:8080` In the command `-p 8080:80`, you are mapping your local port 8080 to the containers port 80. We can list all running containers by executing `docker ps`. We can stop our container by running `docker kill HashrShaId` or you can kill all running containers by executing `docker kill $(docker ps -q)`
 
 
+Since the UI didn't change you figure you can just copy over the Dockerfile from `01-bitminer/ui`. You read it
+
+
+```js
+
+FROM node:boron-wheezy
+RUN npm install -g bower
+ADD package.json .
+RUN npm install
+ADD bower.json bower.json
+RUN bower install --allow-root
+ADD . .
+EXPOSE 80
+CMD ["npm", "run", "start"]
+
+```
+
+From boron (which is node 6.9) on wheezy (a standard debian distro). Install bower, add the package.json file, npm install (install the npm modules required for your app), add the bower.json file and get the dependencies from bower (bower is a client side dependency manager). Then expose the right port, and run npm run start to boot the app when the container starts. This looks fine! Add this as a Dockerfile in `ui/`. 
