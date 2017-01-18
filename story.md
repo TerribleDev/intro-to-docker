@@ -1,5 +1,3 @@
-TODO FIX THE INTRO STORY `docker-compose up -d --build gen`
-
 
 You are a (somewhat) compentant software enginer that has just joined a new company called bitminer. Bitminer is a fancy crypto currency mining platform, and you have been brought on because you said you knew something about docker in your resume. You are given a laptop, and told to show up the first day with docker, and dotnet core installed (see Readme.md](Readme.md) for specific setup instructions ). You know nothing about the current technology but have heard they are porting a legacy system to dotnet core.
 
@@ -13,7 +11,7 @@ Your first task as a new employee is to find out why the company cannot mine doc
 
 First you start the system in detached mode `docker-compose up -d`, and you pull up `localhost:8000` in your browser. You start scaling up the `workers` by running `docker-compose scale worker=5`. Everything seems normal, you see a standard uptick in coin mining. You then go for crazy mode and scale up the workers more `docker-compose scale worker=20` You definitely notice an increase in coin mining, but diminishing returns overall.
 
-You start looking into `gen`, as you assume all python is terrible. On line 21 you notice a clear performance mistake. Someone has accidentally added a sleep to python! You delete the line (please delete line 21). You rebuild the docker image `docker-compose create --build gen` and then you restart the gen service `docker-compose restart gen`.
+You start looking into `gen`, as you assume all python is terrible. On line 21 you notice a clear performance mistake. Someone has accidentally added a sleep to python! You delete the line (please delete line 21). You rebuild the docker image and boot it `docker-compose up -d --build gen`
 
 You now being to mine coins much more efficiently! You are highly impressed by their use of `docker-compose` a tool that can fit many docker containers together.
 
@@ -21,7 +19,7 @@ You now being to mine coins much more efficiently! You are highly impressed by t
 
 Impressed by your skills you are put on the Phoenix project. Project Phoenix is, a re-write of the existing infrastructure, because as you all know rewrites are the best way to remove performance bottlenecks. During this rewrite they are unifying almost everything to dotnet, with the exception of the UI team, whom believe its just not cool if its not `js`. Furthermore because you are so knowledgable with docker, they didn't bother docker-izing anything. You are expected to do it without knowing anything about their services, since you are the expert.
 
-You talk to Brent, bitminer's genius application developer. Brent asks you to start off by docker-izing `Hashr` service, noting that he already did the gen service.image containing the `Hashr` application. 
+You talk to Brent, bitminer's genius application developer. Brent asks you to start off by docker-izing `Hashr` service, noting that he already did the `gen` service.
 
 
  You cd into `02-Phoenix/Hashr`, and create a file called `Dockerfile`. You know this is the file docker will use to build the docker image. You read the Hashr `project.json` file, and realize its an dotnet core 1.1 project. You browse to [docker hub](https://hub.docker.com/r/microsoft/dotnet/) to find all docker containers with dotnet builtin. You come across image `1.1.0-sdk-projectjson`, which is what you are looking for. You notice there are a few other images. There are images that do not have an sdk installed, but just the runtime. these images are much smaller, but require you to compile your application outside the container and instead pass your dll's in. Since you don't have any build systems setup, you stick with the sdk, as its faster to get going on.
@@ -101,4 +99,8 @@ CMD ["npm", "run", "start"]
 
 ```
 
-From boron (which is node 6.9) on wheezy (a standard debian distro). Install bower, add the package.json file, npm install (install the npm modules required for your app), add the bower.json file and get the dependencies from bower (bower is a client side dependency manager). Then expose the right port, and run npm run start to boot the app when the container starts. This looks fine! Add this as a Dockerfile in `ui/`. 
+From boron (which is node 6.9) on wheezy (a standard debian distro, node docker images can be [found here](https://hub.docker.com/_/node/)). Install bower, add the package.json file, npm install (install the npm modules required for your app), add the bower.json file and get the dependencies from bower (bower is a client side dependency manager). Then expose the right port, and run npm run start to boot the app when the container starts. This looks fine! Add this as a Dockerfile in `ui/`. 
+
+You can also copy the Dockerfile from the worker `01-bitminer/worker`. This file is much like the hashr service.
+
+

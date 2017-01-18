@@ -1,11 +1,13 @@
 FROM microsoft/dotnet:1.1.0-sdk-projectjson
 
-WORKDIR /dotnetapp
+WORKDIR /app
 
-# copy project.json and restore as distinct layers
 ADD project.json .
-RUN dotnet restore
 
-# copy and build everything else
+RUN ["dotnet", "restore"]
+
 ADD . .
+
+RUN ["dotnet", "build", "-c", "Release"]
+
 ENTRYPOINT ["dotnet", "run", "-c", "Release"]
