@@ -1,3 +1,6 @@
+TODO FIX THE INTRO STORY `docker-compose up -d --build gen`
+
+
 You are a (somewhat) compentant software enginer that has just joined a new company called bitminer. Bitminer is a fancy crypto currency mining platform, and you have been brought on because you said you knew something about docker in your resume. You are given a laptop, and told to show up the first day with docker, and dotnet core installed (see Readme.md](Readme.md) for specific setup instructions ). You know nothing about the current technology but have heard they are porting a legacy system to dotnet core.
 
 ## Day 01
