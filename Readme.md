@@ -25,12 +25,6 @@ I don't have a mac so I couldn't test this, but this script might work so long a
 /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 brew tap caskroom/cask
 brew cask install docker-toolbox
-brew update
-brew install openssl
-mkdir -p /usr/local/lib
-ln -s /usr/local/opt/openssl/lib/libcrypto.1.0.0.dylib /usr/local/lib/
-ln -s /usr/local/opt/openssl/lib/libssl.1.0.0.dylib /usr/local/lib/
-brew cask install dotnet
 
 ```
 
@@ -38,7 +32,10 @@ brew cask install dotnet
 
 if you prefer to not use the scripts I have made you will need the following installed.
 
-* dotnet core 
+* Docker
+* Docker-Compose
+* Docker-machine
+-- or (win10/macOS only) --
 * docker-toolbox
 
 ### Notes about Windows 7, 8, 8.1, server 2012
