@@ -104,3 +104,45 @@ From boron (which is node 6.9) on wheezy (a standard debian distro, node docker 
 You can also copy the Dockerfile from the worker `01-bitminer/worker`. This file is much like the hashr service.
 
 
+
+You show your work to brent, "Excellent" he says. "We need a story to run the services locally, Can you tackle that". "I'm on it" you reply.
+
+
+You know docker-compose is a great way to get started running these tools locally. You make a new docker-compose.yml file
+
+
+```yml
+
+version: "2"
+
+services:
+  gen:
+    build: ./gen
+    ports:
+    - "8001:80"
+
+  hashr:
+    build: ./Hashr
+    ports:
+    - "8002:80"
+
+  ui:
+    build: ./ui
+    ports:
+    - "8000:80"
+    links:
+    - store
+
+  store:
+    build: ./store
+    ports:
+    - "8003:80"
+
+  worker:
+    build: ./worker
+    links:
+     - hashr
+     - gen
+     - store
+
+```
