@@ -1,5 +1,5 @@
 
-You are a (somewhat) compentant software enginer that has just joined a new company called bitminer. Bitminer is a fancy crypto currency mining platform, and you have been brought on because you said you knew something about docker in your resume. You are given a laptop, and told to show up the first day with docker, and dotnet core installed (see Readme.md](Readme.md) for specific setup instructions ). You know nothing about the current technology but have heard they are porting a legacy system to dotnet core.
+You are a (somewhat) compentant software enginer that has just joined a new company called bitminer. Bitminer is a fancy crypto currency mining platform, and you have been brought on because you said you knew something about docker in your resume. You are given a laptop, and told to show up the first day with docker, installed (see Readme.md](Readme.md) for specific setup instructions ). You know nothing about the current technology but have heard they are porting a legacy system to dotnet core.
 
 ## Day 01
 
@@ -7,13 +7,13 @@ You show up on your first day, and are told to `cd` into the bitminer folder (cd
 
 As the text starts flying by, you notice a python app, a ruby app, a javascript app, and 2 dotnet apps being compiled. You assume these people know tons about microservices. You browse to `localhost:8000` and are met with a graph showing coins being mined on your machine. They ask you to stop the app <kbd>Ctrl</kbd> + <kbd>c</kcb> or <kbd>Cmd</kbd> + <kbd>c</kcb>
 
-Your first task as a new employee is to find out why the company cannot mine dockercoins beyond a certain scale. They inform you that they have a fleet of `workers` that talk to a python service called `gen`, which serves up the current transaction. There is a `hashr` app that hashes the transaction, and a `store` for databasing. All of these individual services are being used by seperate `workers`. 
+Your first task as a new employee is to find out why the company cannot mine dockercoins beyond a certain scale. They inform you that they have a fleet of `workers` that talk to a python service called `gen`, which serves up the current blockchain transaction. There is a `hashr` app that hashes the transaction, and a `store` for databasing. All of these individual services are being used by seperate `workers`. 
 
 First you start the system in detached mode `docker-compose up -d`, and you pull up `localhost:8000` in your browser. You start scaling up the `workers` by running `docker-compose scale worker=5`. Everything seems normal, you see a standard uptick in coin mining. You then go for crazy mode and scale up the workers more `docker-compose scale worker=20` You definitely notice an increase in coin mining, but diminishing returns overall.
 
 You start looking into `gen`, as you assume all python is terrible. On line 21 you notice a clear performance mistake. Someone has accidentally added a sleep to python! You delete the line (please delete line 21). You rebuild the docker image and boot it `docker-compose up -d --build gen`
 
-You now being to mine coins much more efficiently! You are highly impressed by their use of `docker-compose` a tool that can fit many docker containers together.
+You now being to mine coins much more efficiently! You are highly impressed by their use of `docker-compose` a tool that can fit many docker containers together (more details to come). You run `docker-compose down` to stop all of the docker containers
 
 ## Day 02 - The Phoenix project
 
@@ -104,7 +104,6 @@ From boron (which is node 6.9) on wheezy (a standard debian distro, node docker 
 You can also copy the Dockerfile from the worker `01-bitminer/worker`. This file is much like the hashr service.
 
 
-
 You show your work to brent, "Excellent" he says. "We need a story to run the services locally, Can you tackle that". "I'm on it" you reply.
 
 
@@ -146,3 +145,13 @@ services:
      - store
 
 ```
+
+This file declares services called ge, hashr, ui, store, and worker. it also shows where to find the Dockerfiles to build the containers, and any images that need to be "linked" or networked together. This will cause docker-compose to inject appropriate dns entries to dependent containers.
+
+You run `docker-compose up -d`, and browse to `localhost:8000`. You see the coins being mined again. However you notice the performance bug with `gen` has been ported over. You remove line 22 of `02-Pheonix/gen/Controllers/ValuesController.cs`, and run `docker-compose up -d --build gen`. You notice the container boots, but for some reason the nuget packages were installed again. Since you only edited source code, and not the project.json file this should not occur.
+
+You look at the Dockerfile for the `worker` service. You move line 5 to 8 (after dotnet restore) and you add `ADD project.json .` to line 5. This will only add the project.json file first before nuget restoring, which will tell docker to only nuget restore if that file has changed.
+
+You `docker-compose down` and then `docker-compose up --build` one more time and everything works!
+
+You have now dockerized your first set of services. Your career is just getting started at bitminer, and you never know what the future will bring!
