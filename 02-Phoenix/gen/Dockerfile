@@ -2,9 +2,11 @@ FROM microsoft/dotnet:1.1.0-sdk-projectjson
 
 WORKDIR /app
 
-ADD . .
+ADD project.json project.json
 
 RUN ["dotnet", "restore"]
+
+ADD . .
 
 RUN ["dotnet", "build", "-c", "Release"]
 
