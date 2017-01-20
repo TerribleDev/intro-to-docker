@@ -32,11 +32,12 @@ brew cask install docker-toolbox
 
 if you prefer to not use the scripts I have made you will need the following installed.
 
+* docker-toolbox (win10/macOS only)
+-- or --
 * Docker
 * Docker-Compose
 * Docker-machine
--- or (win10/macOS only) --
-* docker-toolbox
+
 
 ### Notes about Windows 7, 8, 8.1, server 2012
 
