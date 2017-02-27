@@ -1,6 +1,6 @@
 ## Intro to docker
 
-This is the code for my intro to docker class. These are the materials for an in-person class, however you can do it yourself by reading [the story](story.md). This is still being put together. Please clone the repo on the day of the class for the latest materials.
+This is the code for my intro to docker class. These are the materials for an in-person class. I have recorded the class on [youtube](https://www.youtube.com/watch?v=6EGyhDlr8rs). You can also run through it yourself by reading [the story](story.md). You can read more about it on a [blog post I wrote](https://aka.terribledev.io/docker101).
 
 ## Getting Started
 
