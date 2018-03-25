@@ -27,7 +27,7 @@ You talk to Brent, bitminer's genius application developer. Brent asks you to st
 You add the following to your Dockerfile
 
 ```
-FROM microsoft/dotnet:1.1.0-sdk-projectjson
+FROM microsoft/aspnetcore-build:1.1
 
 WORKDIR /app
 
@@ -60,7 +60,7 @@ CMD ["dotnet", "run", "-c", "Release", "--server.urls", "http://*:80"]
 The full file should look like this:
 
 ```
-FROM microsoft/dotnet:1.1.0-sdk-projectjson
+FROM microsoft/aspnetcore-build:1.1
 
 WORKDIR /app
 
